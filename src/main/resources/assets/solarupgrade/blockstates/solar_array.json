@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model":  "solarupgrade:block/solar_array" }
+  }
+}

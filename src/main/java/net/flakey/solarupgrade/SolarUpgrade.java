@@ -1,6 +1,9 @@
 package net.flakey.solarupgrade;
 
 import com.mojang.logging.LogUtils;
+import net.flakey.solarupgrade.block.ModBlocks;
+import net.flakey.solarupgrade.item.ModCreativeModeTabs;
+import net.flakey.solarupgrade.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -36,6 +39,9 @@ public class SolarUpgrade
     public SolarUpgrade() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -47,6 +53,53 @@ public class SolarUpgrade
     }
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.SILICON);
+            event.accept(ModItems.SILICON_COMPOSITE);
+            event.accept(ModItems.SOLAR_CELL);
+            event.accept(ModItems.RAW_ENHANCEMENT_CORE);
+            event.accept(ModItems.UNCHARGED_ENHANCEMENT_CORE);
+            event.accept(ModItems.CHARGED_ENHANCEMENT_CORE);
+            event.accept(ModItems.MODIFIED_ENHANCEMENT_CORE);
+            event.accept(ModItems.COPPER_WIRE);
+            event.accept(ModItems.GLASS_SHEET);
+            event.accept(ModItems.RUBBER);
+            event.accept(ModItems.METAL_FRAME);
+            event.accept(ModItems.FORGOTTEN_MATERIAL);
+
+        }
+        if(event.getTab() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.accept(ModBlocks.SOLAR_CHARGER);
+            event.accept(ModBlocks.SOLAR_PANEL);
+            event.accept(ModBlocks.SOLAR_ARRAY);
+            event.accept(ModBlocks.ENHANCEMENT_TABLE);
+            event.accept(ModBlocks.INSULATED_WIRE);
+        }
+        if(event.getTab() == CreativeModeTabs.NATURAL_BLOCKS) {
+            event.accept(ModBlocks.MATERIAL_ORE);
+        }
+
+        if(event.getTab() == ModCreativeModeTabs.SOLARUPGRADE_TAB) {
+            event.accept(ModItems.SILICON);
+            event.accept(ModItems.SILICON_COMPOSITE);
+            event.accept(ModItems.SOLAR_CELL);
+            event.accept(ModItems.COPPER_WIRE);
+            event.accept(ModItems.GLASS_SHEET);
+            event.accept(ModItems.RUBBER);
+            event.accept(ModItems.METAL_FRAME);
+            event.accept(ModItems.FORGOTTEN_MATERIAL);
+            event.accept(ModItems.RAW_ENHANCEMENT_CORE);
+            event.accept(ModItems.UNCHARGED_ENHANCEMENT_CORE);
+            event.accept(ModItems.CHARGED_ENHANCEMENT_CORE);
+            event.accept(ModItems.MODIFIED_ENHANCEMENT_CORE);
+
+            event.accept(ModBlocks.SOLAR_CHARGER);
+            event.accept(ModBlocks.SOLAR_PANEL);
+            event.accept(ModBlocks.SOLAR_ARRAY);
+            event.accept(ModBlocks.ENHANCEMENT_TABLE);
+            event.accept(ModBlocks.MATERIAL_ORE);
+            event.accept(ModBlocks.INSULATED_WIRE);
+        }
 
     }
 

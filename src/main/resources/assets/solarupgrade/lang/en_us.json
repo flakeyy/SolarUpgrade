@@ -1,0 +1,25 @@
+{
+  "item.solarupgrade.silicon": "Silicon",
+  "item.solarupgrade.copper_wire": "Copper Wire",
+  "item.solarupgrade.glass_sheet": "Glass Sheet",
+  "item.solarupgrade.solar_cell": "Solar Cell",
+  "item.solarupgrade.rubber": "Rubber",
+  "item.solarupgrade.metal_frame": "Metal Frame",
+  "item.solarupgrade.forgotten_material": "Forgotten Material",
+  "item.solarupgrade.raw_enhancement_core": "Raw Enhancement Core",
+  "item.solarupgrade.uncharged_enhancement_core": "Uncharged Enhancement Core",
+  "item.solarupgrade.charged_enhancement_core": "Charged Enhancement Core",
+  "item.solarupgrade.modified_enhancement_core": "Modified Enhancement Core",
+  "item.solarupgrade.silicon_composite": "Silicon Composite",
+
+  "block.solarupgrade.solar_charger": "Solar Charger",
+  "block.solarupgrade.solar_panel": "Solar Panel",
+  "block.solarupgrade.solar_array": "Solar Array",
+  "block.solarupgrade.enhancement_table": "Enhancement Table",
+  "block.solarupgrade.material_ore": "Material Ore",
+  "block.solarupgrade.insulated_wire": "Insulated Wire",
+
+  "creativemodetab.solarupgrade_tab": "Solar Upgrade"
+
+
+}

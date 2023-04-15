@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "solarupgrade:item/raw_enhancement_core"
+  }
+
+}
