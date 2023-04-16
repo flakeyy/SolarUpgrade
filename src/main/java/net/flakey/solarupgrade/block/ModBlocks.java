@@ -36,7 +36,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> SOLAR_ARRAY = registerBlock("solar_array",
         () -> new Block(BlockBehaviour.Properties.of(Material.GLASS)
                 .strength(4f).requiresCorrectToolForDrops().sound(SoundType.GLASS)));
-    public static final RegistryObject<Block> MATERIAL_ORE = registerBlock("material_ore",
+    public static final RegistryObject<Block> END_FORGOTTEN_ORE = registerBlock("end_forgotten_ore",
         () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
                 .strength(10f).requiresCorrectToolForDrops().sound(SoundType.STONE), UniformInt.of(4, 8)));
     public static final RegistryObject<Block> INSULATED_WIRE = registerBlock("insulated_wire",

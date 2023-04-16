@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "solarupgrade:material_ore",
+    "solarupgrade:end_forgotten_ore",
     "solarupgrade:solar_panel",
     "solarupgrade:solar_array",
     "solarupgrade:solar_charger",

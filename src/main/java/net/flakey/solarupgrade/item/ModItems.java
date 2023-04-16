@@ -2,6 +2,8 @@ package net.flakey.solarupgrade.item;
 
 import net.flakey.solarupgrade.SolarUpgrade;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.SimpleFoiledItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -32,9 +34,9 @@ public class ModItems {
     public static final RegistryObject<Item> UNCHARGED_ENHANCEMENT_CORE = ITEMS.register("uncharged_enhancement_core",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CHARGED_ENHANCEMENT_CORE = ITEMS.register("charged_enhancement_core",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> MODIFIED_ENHANCEMENT_CORE = ITEMS.register("modified_enhancement_core",
-            () -> new Item(new Item.Properties()));
+            () -> new SimpleFoiledItem(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

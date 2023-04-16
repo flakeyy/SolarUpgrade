@@ -76,7 +76,7 @@ public class SolarUpgrade
             event.accept(ModBlocks.INSULATED_WIRE);
         }
         if(event.getTab() == CreativeModeTabs.NATURAL_BLOCKS) {
-            event.accept(ModBlocks.MATERIAL_ORE);
+            event.accept(ModBlocks.END_FORGOTTEN_ORE);
             event.accept(ModBlocks.RUBBER_LOG);
             event.accept(ModBlocks.RUBBER_WOOD);
             event.accept(ModBlocks.RUBBER_PLANKS);
@@ -104,7 +104,7 @@ public class SolarUpgrade
             event.accept(ModBlocks.SOLAR_PANEL);
             event.accept(ModBlocks.SOLAR_ARRAY);
             event.accept(ModBlocks.ENHANCEMENT_TABLE);
-            event.accept(ModBlocks.MATERIAL_ORE);
+            event.accept(ModBlocks.END_FORGOTTEN_ORE);
             event.accept(ModBlocks.INSULATED_WIRE);
 
             event.accept(ModBlocks.RUBBER_LOG);

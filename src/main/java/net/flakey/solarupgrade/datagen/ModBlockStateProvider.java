@@ -19,7 +19,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        blockWithItem(ModBlocks.MATERIAL_ORE);
+        blockWithItem(ModBlocks.END_FORGOTTEN_ORE);
         blockWithItem(ModBlocks.SOLAR_ARRAY);
         blockWithItem(ModBlocks.SOLAR_PANEL);
         blockWithItem(ModBlocks.SOLAR_CHARGER);

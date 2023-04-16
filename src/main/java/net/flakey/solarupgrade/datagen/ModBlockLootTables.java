@@ -24,8 +24,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.ENHANCEMENT_TABLE.get());
         dropSelf(ModBlocks.INSULATED_WIRE.get());
 
-        add(ModBlocks.MATERIAL_ORE.get(),
-                (block -> createOreDrop(ModBlocks.MATERIAL_ORE.get(), ModItems.FORGOTTEN_MATERIAL.get())));
+        add(ModBlocks.END_FORGOTTEN_ORE.get(),
+                (block -> createOreDrop(ModBlocks.END_FORGOTTEN_ORE.get(), ModItems.FORGOTTEN_MATERIAL.get())));
 
         this.dropSelf(ModBlocks.RUBBER_LOG.get());
         this.dropSelf(ModBlocks.RUBBER_WOOD.get());
