@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "solarupgrade:solar_panel",
+    "solarupgrade:solar_array",
+    "solarupgrade:solar_charger",
+    "solarupgrade:enhancement_table"
+
+  ]
+}

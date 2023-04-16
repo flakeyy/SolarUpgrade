@@ -1,10 +1,13 @@
 package net.flakey.solarupgrade.block;
 
+import com.mojang.blaze3d.shaders.Uniform;
 import net.flakey.solarupgrade.SolarUpgrade;
 import net.flakey.solarupgrade.item.ModItems;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -22,27 +25,27 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SOLAR_CHARGER = registerBlock("solar_charger",
         () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
-                .strength(6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+                .strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
 
     public static final RegistryObject<Block> SOLAR_PANEL = registerBlock("solar_panel",
         () -> new Block(BlockBehaviour.Properties.of(Material.GLASS)
-                .strength(6f).requiresCorrectToolForDrops().sound(SoundType.GLASS)));
+                .strength(4f).requiresCorrectToolForDrops().sound(SoundType.GLASS)));
 
     public static final RegistryObject<Block> SOLAR_ARRAY = registerBlock("solar_array",
         () -> new Block(BlockBehaviour.Properties.of(Material.GLASS)
-                .strength(6f).requiresCorrectToolForDrops().sound(SoundType.GLASS)));
+                .strength(4f).requiresCorrectToolForDrops().sound(SoundType.GLASS)));
 
     public static final RegistryObject<Block> MATERIAL_ORE = registerBlock("material_ore",
-        () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
-                .strength(6f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+        () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
+                .strength(10f).requiresCorrectToolForDrops().sound(SoundType.STONE), UniformInt.of(4, 8)));
 
     public static final RegistryObject<Block> INSULATED_WIRE = registerBlock("insulated_wire",
         () -> new Block(BlockBehaviour.Properties.of(Material.WOOL)
-                .strength(6f).requiresCorrectToolForDrops().sound(SoundType.WOOL)));
+                .strength(0.3f).sound(SoundType.WOOL)));
 
     public static final RegistryObject<Block> ENHANCEMENT_TABLE = registerBlock("enhancement_table",
         () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
-                .strength(6f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+                .strength(5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
