@@ -1,10 +1,12 @@
 package net.flakey.solarupgrade.datagen;
 
 import net.flakey.solarupgrade.SolarUpgrade;
+import net.flakey.solarupgrade.block.ModBlocks;
 import net.flakey.solarupgrade.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -29,8 +31,20 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.UNCHARGED_ENHANCEMENT_CORE);
         simpleItem(ModItems.CHARGED_ENHANCEMENT_CORE);
         simpleItem(ModItems.MODIFIED_ENHANCEMENT_CORE);
+        saplingItem(ModBlocks.RUBBER_SAPLING);
+        leavesItem(ModBlocks.RUBBER_LEAVES);
     }
 
+    private ItemModelBuilder saplingItem(RegistryObject<Block> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/generated")).texture("layer0",
+                new ResourceLocation(SolarUpgrade.MOD_ID,"block/" + item.getId().getPath()));
+    }
+    private ItemModelBuilder leavesItem(RegistryObject<Block> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/generated")).texture("layer0",
+                new ResourceLocation(SolarUpgrade.MOD_ID,"block/" + item.getId().getPath()));
+    }
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",

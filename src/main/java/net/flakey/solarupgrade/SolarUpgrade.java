@@ -77,6 +77,13 @@ public class SolarUpgrade
         }
         if(event.getTab() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.accept(ModBlocks.MATERIAL_ORE);
+            event.accept(ModBlocks.RUBBER_LOG);
+            event.accept(ModBlocks.RUBBER_WOOD);
+            event.accept(ModBlocks.RUBBER_PLANKS);
+            event.accept(ModBlocks.RUBBER_LEAVES);
+            event.accept(ModBlocks.RUBBER_SAPLING);
+            event.accept(ModBlocks.STRIPPED_RUBBER_LOG);
+            event.accept(ModBlocks.STRIPPED_RUBBER_WOOD);
         }
 
         if(event.getTab() == ModCreativeModeTabs.SOLARUPGRADE_TAB) {
@@ -99,6 +106,15 @@ public class SolarUpgrade
             event.accept(ModBlocks.ENHANCEMENT_TABLE);
             event.accept(ModBlocks.MATERIAL_ORE);
             event.accept(ModBlocks.INSULATED_WIRE);
+
+            event.accept(ModBlocks.RUBBER_LOG);
+            event.accept(ModBlocks.RUBBER_WOOD);
+            event.accept(ModBlocks.RUBBER_PLANKS);
+            event.accept(ModBlocks.RUBBER_LEAVES);
+            event.accept(ModBlocks.RUBBER_SAPLING);
+            event.accept(ModBlocks.STRIPPED_RUBBER_LOG);
+            event.accept(ModBlocks.STRIPPED_RUBBER_WOOD);
+
         }
 
     }

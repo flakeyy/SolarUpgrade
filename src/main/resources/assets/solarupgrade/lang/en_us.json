@@ -19,6 +19,14 @@
   "block.solarupgrade.material_ore": "Material Ore",
   "block.solarupgrade.insulated_wire": "Insulated Wire",
 
+  "block.solarupgrade.rubber_log":  "Rubber Log",
+  "block.solarupgrade.rubber_wood":  "Rubber Wood",
+  "block.solarupgrade.rubber_planks":  "Rubber Planks",
+  "block.solarupgrade.stripped_rubber_log":  "Stripped Rubber Log",
+  "block.solarupgrade.stripped_rubber_wood":  "Stripped Rubber Wood",
+  "block.solarupgrade.rubber_leaves":  "Rubber Leaves",
+  "block.solarupgrade.rubber_sapling":  "Rubber Sapling",
+
   "creativemodetab.solarupgrade_tab": "Solar Upgrade"
 
 

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "solarupgrade:rubber_log",
+    "solarupgrade:rubber_wood",
+    "solarupgrade:stripped_rubber_log",
+    "solarupgrade:stripped_rubber_wood"
+
+  ]
+}
