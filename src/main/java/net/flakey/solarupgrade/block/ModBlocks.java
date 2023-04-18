@@ -3,6 +3,7 @@ package net.flakey.solarupgrade.block;
 import com.mojang.blaze3d.shaders.Uniform;
 import net.flakey.solarupgrade.SolarUpgrade;
 import net.flakey.solarupgrade.block.custom.ModFlammableRotatedPillarBlock;
+import net.flakey.solarupgrade.block.custom.SolarPanelBlock;
 import net.flakey.solarupgrade.item.ModItems;
 import net.flakey.solarupgrade.worldgen.tree.RubberTreeGrower;
 import net.minecraft.core.BlockPos;
@@ -31,8 +32,8 @@ public class ModBlocks {
         () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
                 .strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
     public static final RegistryObject<Block> SOLAR_PANEL = registerBlock("solar_panel",
-        () -> new Block(BlockBehaviour.Properties.of(Material.GLASS)
-                .strength(4f).requiresCorrectToolForDrops().sound(SoundType.GLASS)));
+        () -> new SolarPanelBlock(BlockBehaviour.Properties.of(Material.GLASS)
+                .strength(4f).requiresCorrectToolForDrops().noOcclusion().sound(SoundType.GLASS)));
     public static final RegistryObject<Block> SOLAR_ARRAY = registerBlock("solar_array",
         () -> new Block(BlockBehaviour.Properties.of(Material.GLASS)
                 .strength(4f).requiresCorrectToolForDrops().sound(SoundType.GLASS)));

@@ -21,7 +21,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.END_FORGOTTEN_ORE);
         blockWithItem(ModBlocks.SOLAR_ARRAY);
-        blockWithItem(ModBlocks.SOLAR_PANEL);
         blockWithItem(ModBlocks.SOLAR_CHARGER);
         blockWithItem(ModBlocks.ENHANCEMENT_TABLE);
         blockWithItem(ModBlocks.INSULATED_WIRE);
