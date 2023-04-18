@@ -27,6 +27,17 @@
   "block.solarupgrade.rubber_leaves":  "Rubber Leaves",
   "block.solarupgrade.rubber_sapling":  "Rubber Sapling",
 
+  "enchantment.solarupgrade.lightning_strike": "Lightning Strike",
+  "enchantment.solarupgrade.bleed": "Bleed",
+  "enchantment.solarupgrade.self_healing": "Self Healing",
+  "enchantment.solarupgrade.swift_step": "Swift Step",
+  "enchantment.solarupgrade.rage": "Rage",
+
+  "effect.solarupgrade.bleed": "Bleed",
+  "effect.solarupgrade.bleed": "Self Healing",
+  "effect.solarupgrade.bleed": "Swift Step",
+  "effect.solarupgrade.bleed": "Rage",
+
   "creativemodetab.solarupgrade_tab": "Solar Upgrade"
 
 
