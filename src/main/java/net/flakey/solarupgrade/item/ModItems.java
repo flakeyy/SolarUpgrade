@@ -23,8 +23,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GLASS_SHEET = ITEMS.register("glass_sheet",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> RUBBER = ITEMS.register("rubber",
-            () -> new Item(new Item.Properties()));
+    //public static final RegistryObject<Item> RUBBER = ITEMS.register("rubber",
+    //        () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> METAL_FRAME = ITEMS.register("metal_frame",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FORGOTTEN_MATERIAL = ITEMS.register("forgotten_material",

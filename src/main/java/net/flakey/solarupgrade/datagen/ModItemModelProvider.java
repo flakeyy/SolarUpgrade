@@ -31,10 +31,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.UNCHARGED_ENHANCEMENT_CORE);
         simpleItem(ModItems.CHARGED_ENHANCEMENT_CORE);
         simpleItem(ModItems.MODIFIED_ENHANCEMENT_CORE);
-        saplingItem(ModBlocks.RUBBER_SAPLING);
-        leavesItem(ModBlocks.RUBBER_LEAVES);
+
+        //RUBBER TREE :( saplingItem(ModBlocks.RUBBER_SAPLING);
+        //RUBBER TREE :( leavesItem(ModBlocks.RUBBER_LEAVES);
     }
 
+
+    /* RUBBER TREE :(
     private ItemModelBuilder saplingItem(RegistryObject<Block> item) {
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
@@ -45,6 +48,8 @@ public class ModItemModelProvider extends ItemModelProvider {
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(SolarUpgrade.MOD_ID,"block/" + item.getId().getPath()));
     }
+
+    RUBBER TREE :( */
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",

@@ -15,33 +15,45 @@ public class ModEnchantments {
 
     public static RegistryObject<LightningStrikeEnchantment> LIGHTNING_STRIKE =
             ENCHANTMENTS.register("lightning_strike",
-                    () -> new LightningStrikeEnchantment(Enchantment.Rarity.UNCOMMON,
+                    () -> new LightningStrikeEnchantment(Enchantment.Rarity.RARE,
                             EnchantmentCategory.BOW, EquipmentSlot.MAINHAND));
 
     public static RegistryObject<BleedEnchantment> BLEED =
             ENCHANTMENTS.register("bleed",
-                    () -> new BleedEnchantment(Enchantment.Rarity.UNCOMMON,
+                    () -> new BleedEnchantment(Enchantment.Rarity.RARE,
                             EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
 
     public static RegistryObject<SelfHealingEnchantment> SELF_HEALING =
             ENCHANTMENTS.register("self_healing",
-                    () -> new SelfHealingEnchantment(Enchantment.Rarity.UNCOMMON,
+                    () -> new SelfHealingEnchantment(Enchantment.Rarity.RARE,
                             EnchantmentCategory.ARMOR_LEGS, new EquipmentSlot[]{EquipmentSlot.LEGS}));
 
     public static RegistryObject<SwiftStepEnchantment> SWIFT_STEP =
             ENCHANTMENTS.register("swift_step",
-                    () -> new SwiftStepEnchantment(Enchantment.Rarity.UNCOMMON,
+                    () -> new SwiftStepEnchantment(Enchantment.Rarity.RARE,
                             EnchantmentCategory.ARMOR_FEET, new EquipmentSlot[]{EquipmentSlot.FEET}));
 
     public static RegistryObject<RageEnchantment> RAGE =
             ENCHANTMENTS.register("rage",
-                    () -> new RageEnchantment(Enchantment.Rarity.UNCOMMON,
+                    () -> new RageEnchantment(Enchantment.Rarity.RARE,
                             EnchantmentCategory.ARMOR_CHEST, new EquipmentSlot[]{EquipmentSlot.CHEST}));
 
     public static RegistryObject<HollowedOutEnchantment> HOLLOWED_OUT =
             ENCHANTMENTS.register("hollowed_out",
-                    () -> new HollowedOutEnchantment(Enchantment.Rarity.UNCOMMON,
+                    () -> new HollowedOutEnchantment(Enchantment.Rarity.RARE,
                             EnchantmentCategory.DIGGER, new EquipmentSlot[]{EquipmentSlot.MAINHAND}));
+
+    public static RegistryObject<LifeLeechEnchantment> LIFE_LEECH =
+            ENCHANTMENTS.register("life_leech",
+                    () -> new LifeLeechEnchantment(Enchantment.Rarity.RARE,
+                            EnchantmentCategory.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND}));
+
+    public static RegistryObject<ParryEnchantment> PARRY =
+            ENCHANTMENTS.register("parry",
+                    () -> new ParryEnchantment(Enchantment.Rarity.RARE,
+                            EnchantmentCategory.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND}));
+
+
 
     public static void register(IEventBus eventBus) {
         ENCHANTMENTS.register(eventBus);

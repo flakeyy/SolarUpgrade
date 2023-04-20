@@ -20,11 +20,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.END_FORGOTTEN_ORE);
-        blockWithItem(ModBlocks.SOLAR_ARRAY);
         blockWithItem(ModBlocks.SOLAR_CHARGER);
         blockWithItem(ModBlocks.ENHANCEMENT_TABLE);
-        blockWithItem(ModBlocks.INSULATED_WIRE);
 
+
+        /* RUBBER TREE :(
         logBlock(((RotatedPillarBlock) ModBlocks.RUBBER_LOG.get()));
         axisBlock((RotatedPillarBlock) ModBlocks.RUBBER_WOOD.get(), blockTexture(ModBlocks.RUBBER_LOG.get()), blockTexture(ModBlocks.RUBBER_LOG.get()));
         axisBlock((RotatedPillarBlock) ModBlocks.STRIPPED_RUBBER_LOG.get(), new ResourceLocation(SolarUpgrade.MOD_ID, "block/stripped_rubber_log"),
@@ -40,6 +40,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(ModBlocks.STRIPPED_RUBBER_LOG.get(), models().withExistingParent("solarupgrade:stripped_rubber_log", "minecraft:block/cube_column"));
         simpleBlockItem(ModBlocks.STRIPPED_RUBBER_WOOD.get(), models().withExistingParent("solarupgrade:stripped_rubber_wood", "minecraft:block/cube_column"));
 
+        RUBBER TREE :( */
+
 
     }
 
@@ -47,8 +49,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
     }
 
+    /* RUBBER TREE :(
     private void saplingBlock(RegistryObject<Block> blockRegistryObject) {
         simpleBlock(blockRegistryObject.get(),
                 models().cross(ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath(), blockTexture(blockRegistryObject.get())).renderType("cutout"));
     }
+
+    RUBBER TREE :(*/
 }

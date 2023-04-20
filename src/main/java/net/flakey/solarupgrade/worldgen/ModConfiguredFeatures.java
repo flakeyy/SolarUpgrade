@@ -26,7 +26,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import java.util.List;
 
 public class ModConfiguredFeatures {
-    public static final ResourceKey<ConfiguredFeature<?, ?>> RUBBER_KEY = registerKey("rubber");
+    // RUBBER TREE :( public static final ResourceKey<ConfiguredFeature<?, ?>> RUBBER_KEY = registerKey("rubber");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> END_FORGOTTEN_ORE_KEY = registerKey("end_forgotten_ore");
 
@@ -34,12 +34,17 @@ public class ModConfiguredFeatures {
         RuleTest endstoneReplaceables = new BlockMatchTest(Blocks.END_STONE);
 
 
+        /* RUBBER TREE :(
+
         register(context, RUBBER_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.RUBBER_LOG.get()),
                 new StraightTrunkPlacer(5, 1, 1),
                 BlockStateProvider.simple(ModBlocks.RUBBER_LEAVES.get()),
                 new SpruceFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), ConstantInt.of(5)),
                 new TwoLayersFeatureSize(1, 0, 2)).build());
+
+
+         RUBBER TREE :( */
 
         register(context, END_FORGOTTEN_ORE_KEY, Feature.ORE, new OreConfiguration(endstoneReplaceables,
                 ModBlocks.END_FORGOTTEN_ORE.get().defaultBlockState(), 4, 0.75f));

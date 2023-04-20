@@ -19,13 +19,14 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(ModBlocks.SOLAR_PANEL.get());
-        dropSelf(ModBlocks.SOLAR_ARRAY.get());
+        dropSelf(ModBlocks.ADVANCED_SOLAR_PANEL.get());
         dropSelf(ModBlocks.SOLAR_CHARGER.get());
         dropSelf(ModBlocks.ENHANCEMENT_TABLE.get());
-        dropSelf(ModBlocks.INSULATED_WIRE.get());
 
         add(ModBlocks.END_FORGOTTEN_ORE.get(),
                 (block -> createOreDrop(ModBlocks.END_FORGOTTEN_ORE.get(), ModItems.FORGOTTEN_MATERIAL.get())));
+
+        /* RUBBER TREE :(
 
         this.dropSelf(ModBlocks.RUBBER_LOG.get());
         this.dropSelf(ModBlocks.RUBBER_WOOD.get());
@@ -36,6 +37,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.add(ModBlocks.RUBBER_LEAVES.get(), (block ->
                 createLeavesDrops(block, ModBlocks.RUBBER_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES)));
+
+
+         RUBBER TREE :( */
 
     }
 

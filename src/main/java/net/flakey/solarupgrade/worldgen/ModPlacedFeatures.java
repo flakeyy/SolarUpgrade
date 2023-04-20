@@ -19,14 +19,14 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import java.util.List;
 
 public class ModPlacedFeatures {
-    public static final ResourceKey<PlacedFeature> RUBBER_PLACED_KEY = createKey("rubber_placed");
+    // RUBBER TREE :( public static final ResourceKey<PlacedFeature> RUBBER_PLACED_KEY = createKey("rubber_placed");
     public static final ResourceKey<PlacedFeature> END_FORGOTTEN_PLACED_KEY = createKey("end_forgotten_placed");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
-        register(context, RUBBER_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.RUBBER_KEY),
-                VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.01f, 1), ModBlocks.RUBBER_SAPLING.get()));
+       // RUBBER TREE :( register(context, RUBBER_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.RUBBER_KEY),
+       // RUBBER TREE :(        VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.01f, 1), ModBlocks.RUBBER_SAPLING.get()));
 
         register(context, END_FORGOTTEN_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.END_FORGOTTEN_ORE_KEY),
                 ModOrePlacement.commonOrePlacement(2, //VEINS PER CHUNK

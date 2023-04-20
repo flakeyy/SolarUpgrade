@@ -34,19 +34,18 @@ public class ModBlocks {
     public static final RegistryObject<Block> SOLAR_PANEL = registerBlock("solar_panel",
         () -> new SolarPanelBlock(BlockBehaviour.Properties.of(Material.GLASS)
                 .strength(4f).requiresCorrectToolForDrops().noOcclusion().sound(SoundType.GLASS)));
-    public static final RegistryObject<Block> SOLAR_ARRAY = registerBlock("solar_array",
-        () -> new Block(BlockBehaviour.Properties.of(Material.GLASS)
-                .strength(4f).requiresCorrectToolForDrops().sound(SoundType.GLASS)));
+    public static final RegistryObject<Block> ADVANCED_SOLAR_PANEL = registerBlock("advanced_solar_panel",
+        () -> new SolarPanelBlock(BlockBehaviour.Properties.of(Material.GLASS)
+                .strength(4f).requiresCorrectToolForDrops().noOcclusion().sound(SoundType.GLASS)));
     public static final RegistryObject<Block> END_FORGOTTEN_ORE = registerBlock("end_forgotten_ore",
         () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
                 .strength(10f).requiresCorrectToolForDrops().sound(SoundType.STONE), UniformInt.of(4, 8)));
-    public static final RegistryObject<Block> INSULATED_WIRE = registerBlock("insulated_wire",
-        () -> new Block(BlockBehaviour.Properties.of(Material.WOOL)
-                .strength(0.3f).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> ENHANCEMENT_TABLE = registerBlock("enhancement_table",
         () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
                 .strength(5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
+
+    /* RUBBER TREE :(
     public static final RegistryObject<Block> RUBBER_LOG = registerBlock("rubber_log",
         () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)
                 .strength(2f).sound(SoundType.WOOD)));
@@ -101,6 +100,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> RUBBER_SAPLING = registerBlock("rubber_sapling",
             () -> new SaplingBlock(new RubberTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
 
+    RUBBER TREE :( */
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

@@ -26,4 +26,14 @@ public class LightningStrikeEnchantment extends Enchantment {
 
         super.doPostAttack(pAttacker, pTarget, pLevel);
     }
+
+    @Override
+    public int getMaxLevel() {
+        return 1;
+    }
+
+    @Override
+    public boolean isTreasureOnly() {
+        return true;
+    }
 }

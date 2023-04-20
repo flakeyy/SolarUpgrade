@@ -64,12 +64,13 @@ public class SolarUpgrade
         if(event.getTab() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(ModBlocks.SOLAR_CHARGER);
             event.accept(ModBlocks.SOLAR_PANEL);
-            event.accept(ModBlocks.SOLAR_ARRAY);
+            event.accept(ModBlocks.ADVANCED_SOLAR_PANEL);
             event.accept(ModBlocks.ENHANCEMENT_TABLE);
-            event.accept(ModBlocks.INSULATED_WIRE);
         }
         if(event.getTab() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.accept(ModBlocks.END_FORGOTTEN_ORE);
+            /* RUBBER TREE :(
+
             event.accept(ModBlocks.RUBBER_LOG);
             event.accept(ModBlocks.RUBBER_WOOD);
             event.accept(ModBlocks.RUBBER_PLANKS);
@@ -77,6 +78,8 @@ public class SolarUpgrade
             event.accept(ModBlocks.RUBBER_SAPLING);
             event.accept(ModBlocks.STRIPPED_RUBBER_LOG);
             event.accept(ModBlocks.STRIPPED_RUBBER_WOOD);
+
+            RUBBER TREE :( */
         }
 
         if(event.getTab() == ModCreativeModeTabs.SOLARUPGRADE_TAB) {
@@ -95,11 +98,12 @@ public class SolarUpgrade
 
             event.accept(ModBlocks.SOLAR_CHARGER);
             event.accept(ModBlocks.SOLAR_PANEL);
-            event.accept(ModBlocks.SOLAR_ARRAY);
+            event.accept(ModBlocks.ADVANCED_SOLAR_PANEL);
             event.accept(ModBlocks.ENHANCEMENT_TABLE);
             event.accept(ModBlocks.END_FORGOTTEN_ORE);
-            event.accept(ModBlocks.INSULATED_WIRE);
 
+
+            /* RUBBER TREE :(
             event.accept(ModBlocks.RUBBER_LOG);
             event.accept(ModBlocks.RUBBER_WOOD);
             event.accept(ModBlocks.RUBBER_PLANKS);
@@ -107,6 +111,8 @@ public class SolarUpgrade
             event.accept(ModBlocks.RUBBER_SAPLING);
             event.accept(ModBlocks.STRIPPED_RUBBER_LOG);
             event.accept(ModBlocks.STRIPPED_RUBBER_WOOD);
+
+            RUBBER TREE :( */
 
         }
 

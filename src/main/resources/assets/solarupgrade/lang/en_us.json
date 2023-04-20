@@ -14,10 +14,9 @@
 
   "block.solarupgrade.solar_charger": "Solar Charger",
   "block.solarupgrade.solar_panel": "Solar Panel",
-  "block.solarupgrade.solar_array": "Solar Array",
+  "block.solarupgrade.advanced_solar_panel": "Advanced Solar Panel",
   "block.solarupgrade.enhancement_table": "Enhancement Table",
   "block.solarupgrade.end_forgotten_ore": "Forgotten Ore",
-  "block.solarupgrade.insulated_wire": "Insulated Wire",
 
   "block.solarupgrade.rubber_log":  "Rubber Log",
   "block.solarupgrade.rubber_wood":  "Rubber Wood",
@@ -34,9 +33,9 @@
   "enchantment.solarupgrade.rage": "Rage",
 
   "effect.solarupgrade.bleed": "Bleed",
-  "effect.solarupgrade.bleed": "Self Healing",
-  "effect.solarupgrade.bleed": "Swift Step",
-  "effect.solarupgrade.bleed": "Rage",
+  "effect.solarupgrade.self_healing": "Self Healing",
+  "effect.solarupgrade.swift_step": "Swift Step",
+  "effect.solarupgrade.rage": "Rage",
 
   "creativemodetab.solarupgrade_tab": "Solar Upgrade"
 
