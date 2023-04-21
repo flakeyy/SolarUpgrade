@@ -7,6 +7,7 @@ import net.flakey.solarupgrade.effect.ModEffects;
 import net.flakey.solarupgrade.enchantment.ModEnchantments;
 import net.flakey.solarupgrade.item.ModCreativeModeTabs;
 import net.flakey.solarupgrade.item.ModItems;
+import net.flakey.solarupgrade.networking.ModMessages;
 import net.flakey.solarupgrade.screen.ModMenuTypes;
 import net.flakey.solarupgrade.screen.SolarChargerScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -50,7 +51,7 @@ public class SolarUpgrade
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        ModMessages.register();
     }
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
