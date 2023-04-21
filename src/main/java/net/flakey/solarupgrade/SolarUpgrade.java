@@ -2,10 +2,14 @@ package net.flakey.solarupgrade;
 
 import com.mojang.logging.LogUtils;
 import net.flakey.solarupgrade.block.ModBlocks;
+import net.flakey.solarupgrade.block.entity.ModBlockEntities;
 import net.flakey.solarupgrade.effect.ModEffects;
 import net.flakey.solarupgrade.enchantment.ModEnchantments;
 import net.flakey.solarupgrade.item.ModCreativeModeTabs;
 import net.flakey.solarupgrade.item.ModItems;
+import net.flakey.solarupgrade.screen.ModMenuTypes;
+import net.flakey.solarupgrade.screen.SolarChargerScreen;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -32,8 +36,12 @@ public class SolarUpgrade
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
         ModEnchantments.register(modEventBus);
         ModEffects.register(modEventBus);
+
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
@@ -56,7 +64,7 @@ public class SolarUpgrade
             event.accept(ModItems.MODIFIED_ENHANCEMENT_CORE);
             event.accept(ModItems.COPPER_WIRE);
             event.accept(ModItems.GLASS_SHEET);
-            event.accept(ModItems.RUBBER);
+            //event.accept(ModItems.RUBBER);
             event.accept(ModItems.METAL_FRAME);
             event.accept(ModItems.FORGOTTEN_MATERIAL);
 
@@ -88,7 +96,7 @@ public class SolarUpgrade
             event.accept(ModItems.SOLAR_CELL);
             event.accept(ModItems.COPPER_WIRE);
             event.accept(ModItems.GLASS_SHEET);
-            event.accept(ModItems.RUBBER);
+            //event.accept(ModItems.RUBBER);
             event.accept(ModItems.METAL_FRAME);
             event.accept(ModItems.FORGOTTEN_MATERIAL);
             event.accept(ModItems.RAW_ENHANCEMENT_CORE);
@@ -124,6 +132,8 @@ public class SolarUpgrade
     {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+
+            MenuScreens.register(ModMenuTypes.SOLAR_CHARGER_MENU.get(), SolarChargerScreen::new);
 
         }
     }

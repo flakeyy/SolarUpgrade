@@ -26,7 +26,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.FORGOTTEN_MATERIAL);
         simpleItem(ModItems.COPPER_WIRE);
         simpleItem(ModItems.METAL_FRAME);
-        simpleItem(ModItems.RUBBER);
+        //simpleItem(ModItems.RUBBER);
         simpleItem(ModItems.RAW_ENHANCEMENT_CORE);
         simpleItem(ModItems.UNCHARGED_ENHANCEMENT_CORE);
         simpleItem(ModItems.CHARGED_ENHANCEMENT_CORE);

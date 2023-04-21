@@ -3,6 +3,7 @@ package net.flakey.solarupgrade.block;
 import com.mojang.blaze3d.shaders.Uniform;
 import net.flakey.solarupgrade.SolarUpgrade;
 import net.flakey.solarupgrade.block.custom.ModFlammableRotatedPillarBlock;
+import net.flakey.solarupgrade.block.custom.SolarChargerBlock;
 import net.flakey.solarupgrade.block.custom.SolarPanelBlock;
 import net.flakey.solarupgrade.item.ModItems;
 import net.flakey.solarupgrade.worldgen.tree.RubberTreeGrower;
@@ -29,7 +30,7 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, SolarUpgrade.MOD_ID);
 
     public static final RegistryObject<Block> SOLAR_CHARGER = registerBlock("solar_charger",
-        () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+        () -> new SolarChargerBlock(BlockBehaviour.Properties.of(Material.METAL)
                 .strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
     public static final RegistryObject<Block> SOLAR_PANEL = registerBlock("solar_panel",
         () -> new SolarPanelBlock(BlockBehaviour.Properties.of(Material.GLASS)
