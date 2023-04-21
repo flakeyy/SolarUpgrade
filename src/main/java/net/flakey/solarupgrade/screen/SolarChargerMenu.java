@@ -43,6 +43,10 @@ public class SolarChargerMenu extends AbstractContainerMenu {
         return data.get(0) > 0;
     }
 
+    public SolarChargerBlockEntity getBlockEntity() {
+        return this.blockEntity;
+    }
+
     public int getScaledProgress() {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);  // Max Progress
@@ -121,4 +125,5 @@ public class SolarChargerMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
     }
+
 }

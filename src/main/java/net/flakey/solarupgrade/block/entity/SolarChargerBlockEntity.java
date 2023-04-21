@@ -1,7 +1,10 @@
 package net.flakey.solarupgrade.block.entity;
 
 import net.flakey.solarupgrade.item.ModItems;
+import net.flakey.solarupgrade.networking.ModMessages;
+import net.flakey.solarupgrade.networking.packet.EnergySyncS2CPacket;
 import net.flakey.solarupgrade.screen.SolarChargerMenu;
+import net.flakey.solarupgrade.util.ModEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -21,6 +24,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
@@ -34,7 +38,18 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
         }
     };
 
+    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(40000, 2048) {
+        @Override
+        public void onEnergyChanged() {
+            setChanged();
+            ModMessages.sendToClients(new EnergySyncS2CPacket(this.energy, getBlockPos()));
+
+        }
+    };
+    private static final int ENERGY_REQ = 128;
+
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
+    private LazyOptional<IEnergyStorage> lazyEnergyHandler = LazyOptional.empty();
 
     protected final ContainerData data;
     private int progress = 0;
@@ -78,8 +93,20 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
         return new SolarChargerMenu(id, inventory, this, this.data);
     }
 
+    public IEnergyStorage getEnergyStorage() {
+        return ENERGY_STORAGE;
+    }
+
+    public void setEnergyLevel(int energy) {
+        this.ENERGY_STORAGE.setEnergy(energy);
+    }
+
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        if(cap == ForgeCapabilities.ENERGY) {
+            return lazyEnergyHandler.cast();
+        }
+
         if(cap == ForgeCapabilities.ITEM_HANDLER) {
             return lazyItemHandler.cast();
         }
@@ -91,18 +118,21 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
     public void onLoad() {
         super.onLoad();
         lazyItemHandler = LazyOptional.of(() -> itemHandler);
+        lazyEnergyHandler = LazyOptional.of(() -> ENERGY_STORAGE);
     }
 
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
         lazyItemHandler.invalidate();
+        lazyEnergyHandler.invalidate();
     }
 
     @Override
     protected void saveAdditional(CompoundTag nbt) {
         nbt.put("inventory", itemHandler.serializeNBT());
         nbt.putInt("solar_charger.progress", this.progress);
+        nbt.putInt("solar_charger.energy", ENERGY_STORAGE.getEnergyStored());
 
         super.saveAdditional(nbt);
     }
@@ -112,6 +142,7 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
         progress = nbt.getInt("solar_charger.progress");
+        ENERGY_STORAGE.setEnergy(nbt.getInt("solar_charger.energy"));
     }
 
     public void drops() {
@@ -128,8 +159,14 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
             return;
         }
 
-        if(hasRecipe(pEntity)) {
+        if(hasCoreInFirstSlot(pEntity)) {
+            pEntity.ENERGY_STORAGE.receiveEnergy(20000, false);
+        }
+
+
+        if(hasRecipe(pEntity) && hasEnoughEnergy(pEntity)) {
             pEntity.progress++;
+            extractEnergy(pEntity);
             setChanged(level, pos, state);
 
             if(pEntity.progress >= pEntity.maxProgress) {
@@ -140,6 +177,18 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
             setChanged(level, pos, state);
         }
 
+    }
+
+    private static void extractEnergy(SolarChargerBlockEntity pEntity) {
+        pEntity.ENERGY_STORAGE.extractEnergy(ENERGY_REQ, false);
+    }
+
+    private static boolean hasEnoughEnergy(SolarChargerBlockEntity pEntity) {
+        return pEntity.ENERGY_STORAGE.getEnergyStored() >= ENERGY_REQ * pEntity.maxProgress;
+    }
+
+    private static boolean hasCoreInFirstSlot(SolarChargerBlockEntity pEntity) {
+        return pEntity.itemHandler.getStackInSlot(0).getItem() == ModItems.UNCHARGED_ENHANCEMENT_CORE.get();
     }
 
     private void resetProgress() {
