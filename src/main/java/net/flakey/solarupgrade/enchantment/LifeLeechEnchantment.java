@@ -55,7 +55,6 @@ public class LifeLeechEnchantment extends Enchantment{
 
             if (attackEvent) {
                 event.player.heal(1.0f);
-                event.player.getLastHurtMob();
                 attackEvent = false;
             }
         }
