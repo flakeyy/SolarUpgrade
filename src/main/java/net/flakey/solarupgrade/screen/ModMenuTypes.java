@@ -17,6 +17,7 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<SolarChargerMenu>> SOLAR_CHARGER_MENU =
             registerMenuType(SolarChargerMenu::new, "solar_charger_menu");
 
+
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory, String name) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));
     }

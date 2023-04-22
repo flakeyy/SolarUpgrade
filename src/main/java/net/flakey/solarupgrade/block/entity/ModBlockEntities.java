@@ -17,6 +17,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(SolarChargerBlockEntity::new,
                             ModBlocks.SOLAR_CHARGER.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<SolarPanelBlockEntity>> SOLAR_PANEL =
+            BLOCK_ENTITIES.register("solar_panel", () ->
+                    BlockEntityType.Builder.of(SolarPanelBlockEntity::new,
+                            ModBlocks.SOLAR_PANEL.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }
