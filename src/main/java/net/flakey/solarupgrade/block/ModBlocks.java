@@ -2,9 +2,7 @@ package net.flakey.solarupgrade.block;
 
 import com.mojang.blaze3d.shaders.Uniform;
 import net.flakey.solarupgrade.SolarUpgrade;
-import net.flakey.solarupgrade.block.custom.ModFlammableRotatedPillarBlock;
-import net.flakey.solarupgrade.block.custom.SolarChargerBlock;
-import net.flakey.solarupgrade.block.custom.SolarPanelBlock;
+import net.flakey.solarupgrade.block.custom.*;
 import net.flakey.solarupgrade.item.ModItems;
 import net.flakey.solarupgrade.worldgen.tree.RubberTreeGrower;
 import net.minecraft.core.BlockPos;
@@ -36,13 +34,13 @@ public class ModBlocks {
         () -> new SolarPanelBlock(BlockBehaviour.Properties.of(Material.GLASS)
                 .strength(4f).requiresCorrectToolForDrops().noOcclusion().sound(SoundType.GLASS)));
     public static final RegistryObject<Block> ADVANCED_SOLAR_PANEL = registerBlock("advanced_solar_panel",
-        () -> new SolarPanelBlock(BlockBehaviour.Properties.of(Material.GLASS)
+        () -> new AdvancedSolarPanelBlock(BlockBehaviour.Properties.of(Material.GLASS)
                 .strength(4f).requiresCorrectToolForDrops().noOcclusion().sound(SoundType.GLASS)));
     public static final RegistryObject<Block> END_FORGOTTEN_ORE = registerBlock("end_forgotten_ore",
         () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
                 .strength(10f).requiresCorrectToolForDrops().sound(SoundType.STONE), UniformInt.of(4, 8)));
     public static final RegistryObject<Block> ENHANCEMENT_TABLE = registerBlock("enhancement_table",
-        () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
+        () -> new EnhancementTableBlock(BlockBehaviour.Properties.of(Material.STONE)
                 .strength(5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
 

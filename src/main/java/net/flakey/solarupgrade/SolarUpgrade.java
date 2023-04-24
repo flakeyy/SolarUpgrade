@@ -8,6 +8,7 @@ import net.flakey.solarupgrade.enchantment.ModEnchantments;
 import net.flakey.solarupgrade.item.ModCreativeModeTabs;
 import net.flakey.solarupgrade.item.ModItems;
 import net.flakey.solarupgrade.networking.ModMessages;
+import net.flakey.solarupgrade.screen.EnhancementTableScreen;
 import net.flakey.solarupgrade.screen.ModMenuTypes;
 import net.flakey.solarupgrade.screen.SolarChargerScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -135,6 +136,7 @@ public class SolarUpgrade
         public static void onClientSetup(FMLClientSetupEvent event) {
 
             MenuScreens.register(ModMenuTypes.SOLAR_CHARGER_MENU.get(), SolarChargerScreen::new);
+            MenuScreens.register(ModMenuTypes.ENHANCEMENT_TABLE_MENU.get(), EnhancementTableScreen::new);
 
         }
     }

@@ -17,10 +17,21 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(SolarChargerBlockEntity::new,
                             ModBlocks.SOLAR_CHARGER.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<EnhancementTableBlockEntity>> ENHANCEMENT_TABLE =
+            BLOCK_ENTITIES.register("enhancement_table", () ->
+                    BlockEntityType.Builder.of(EnhancementTableBlockEntity::new,
+                            ModBlocks.ENHANCEMENT_TABLE.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<SolarPanelBlockEntity>> SOLAR_PANEL =
             BLOCK_ENTITIES.register("solar_panel", () ->
                     BlockEntityType.Builder.of(SolarPanelBlockEntity::new,
                             ModBlocks.SOLAR_PANEL.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<AdvancedSolarPanelBlockEntity>> ADVANCED_SOLAR_PANEL =
+            BLOCK_ENTITIES.register("advanced_solar_panel", () ->
+                    BlockEntityType.Builder.of(AdvancedSolarPanelBlockEntity::new,
+                            ModBlocks.ADVANCED_SOLAR_PANEL.get()).build(null));
+
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

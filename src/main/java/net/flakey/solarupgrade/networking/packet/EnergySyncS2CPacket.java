@@ -1,7 +1,11 @@
 package net.flakey.solarupgrade.networking.packet;
 
+import net.flakey.solarupgrade.block.entity.AdvancedSolarPanelBlockEntity;
+import net.flakey.solarupgrade.block.entity.EnhancementTableBlockEntity;
 import net.flakey.solarupgrade.block.entity.SolarChargerBlockEntity;
 import net.flakey.solarupgrade.block.entity.SolarPanelBlockEntity;
+import net.flakey.solarupgrade.screen.EnhancementTableMenu;
+import net.flakey.solarupgrade.screen.EnhancementTableScreen;
 import net.flakey.solarupgrade.screen.SolarChargerMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -40,7 +44,18 @@ public class EnergySyncS2CPacket {
                     blockEntity.setEnergyLevel(energy);
                 }
             }
+            if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof EnhancementTableBlockEntity blockEntity) {
+                blockEntity.setEnergyLevel(energy);
+                if(Minecraft.getInstance().player.containerMenu instanceof EnhancementTableMenu menu &&
+                    menu.getBlockEntity().getBlockPos().equals(pos)) {
+                    blockEntity.setEnergyLevel(energy);
+                }
+            }
+
             if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof SolarPanelBlockEntity blockEntity) {
+                blockEntity.setEnergyLevel(energy);
+            }
+            if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof AdvancedSolarPanelBlockEntity blockEntity) {
                 blockEntity.setEnergyLevel(energy);
             }
         });

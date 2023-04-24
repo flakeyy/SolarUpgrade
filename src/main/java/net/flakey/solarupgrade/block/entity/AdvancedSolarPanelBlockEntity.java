@@ -1,6 +1,5 @@
 package net.flakey.solarupgrade.block.entity;
 
-import net.flakey.solarupgrade.block.ModBlocks;
 import net.flakey.solarupgrade.networking.ModMessages;
 import net.flakey.solarupgrade.networking.packet.EnergySyncS2CPacket;
 import net.flakey.solarupgrade.util.ModEnergyStorage;
@@ -9,24 +8,21 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.energy.IEnergyStorage;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class SolarPanelBlockEntity extends BlockEntity{
-    int maxTransfer = 32;
-    int productionMultiplier = 1;
-    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(4000, maxTransfer) {
+public class AdvancedSolarPanelBlockEntity extends BlockEntity{
+    int maxTransfer = 256;
+    int productionMultiplier = 8;
+    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(16000, maxTransfer) {
         @Override
         public void onEnergyChanged() {
             setChanged();
@@ -38,8 +34,8 @@ public class SolarPanelBlockEntity extends BlockEntity{
 
     private LazyOptional<IEnergyStorage> lazyEnergyHandler = LazyOptional.empty();
 
-    public SolarPanelBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.SOLAR_PANEL.get(), pos, state);
+    public AdvancedSolarPanelBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.ADVANCED_SOLAR_PANEL.get(), pos, state);
     }
 
     public void setEnergyLevel(int energy) {
@@ -71,7 +67,7 @@ public class SolarPanelBlockEntity extends BlockEntity{
 
     @Override
     protected void saveAdditional(CompoundTag nbt) {
-        nbt.putInt("solar_panel.energy", ENERGY_STORAGE.getEnergyStored());
+        nbt.putInt("advanced_solar_panel.energy", ENERGY_STORAGE.getEnergyStored());
 
         super.saveAdditional(nbt);
     }
@@ -79,12 +75,13 @@ public class SolarPanelBlockEntity extends BlockEntity{
     @Override
     public void load(CompoundTag nbt) {
         super.load(nbt);
-        ENERGY_STORAGE.setEnergy(nbt.getInt("solar_panel.energy"));
+        ENERGY_STORAGE.setEnergy(nbt.getInt("advanced_solar_panel.energy"));
     }
 
     private int createEnergy() {
         return (Math.round((SolarPanelProductionAmnt.computeSunIntensity(level, worldPosition) * productionMultiplier)));
     }
+
 
     private void sendEnergy() {
         AtomicInteger capacity = new AtomicInteger(ENERGY_STORAGE.getEnergyStored());
@@ -109,7 +106,7 @@ public class SolarPanelBlockEntity extends BlockEntity{
         }
     }
 
-    public static void tick(Level level, BlockPos pos, BlockState state, SolarPanelBlockEntity pEntity) {
+    public static void tick(Level level, BlockPos pos, BlockState state, AdvancedSolarPanelBlockEntity pEntity) {
         if(level.isClientSide()) {
             return;
         }

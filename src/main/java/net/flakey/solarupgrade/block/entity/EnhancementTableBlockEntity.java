@@ -1,9 +1,10 @@
 package net.flakey.solarupgrade.block.entity;
 
+import net.flakey.solarupgrade.enchantment.ModEnchantments;
 import net.flakey.solarupgrade.item.ModItems;
 import net.flakey.solarupgrade.networking.ModMessages;
 import net.flakey.solarupgrade.networking.packet.EnergySyncS2CPacket;
-import net.flakey.solarupgrade.screen.SolarChargerMenu;
+import net.flakey.solarupgrade.screen.EnhancementTableMenu;
 import net.flakey.solarupgrade.util.ModEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -12,21 +13,18 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -36,8 +34,8 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(2) {
+public class EnhancementTableBlockEntity extends BlockEntity implements MenuProvider {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -61,14 +59,14 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
     private int progress = 0;
     private int maxProgress = 312;
 
-    public SolarChargerBlockEntity (BlockPos pos, BlockState state) {
-        super(ModBlockEntities.SOLAR_CHARGER.get(), pos, state);
+    public EnhancementTableBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.ENHANCEMENT_TABLE.get(), pos, state);
         this.data = new ContainerData() {
             @Override
             public int get(int index) {
                 return switch (index) {
-                    case 0 -> SolarChargerBlockEntity.this.progress;
-                    case 1 -> SolarChargerBlockEntity.this.maxProgress;
+                    case 0 -> EnhancementTableBlockEntity.this.progress;
+                    case 1 -> EnhancementTableBlockEntity.this.maxProgress;
                     default -> 0;
                 };
             }
@@ -76,27 +74,27 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                    case 0 -> SolarChargerBlockEntity.this.progress = value;
-                    case 1 -> SolarChargerBlockEntity.this.maxProgress = value;
+                    case 0 -> EnhancementTableBlockEntity.this.progress = value;
+                    case 1 -> EnhancementTableBlockEntity.this.maxProgress = value;
                 }
             }
 
             @Override
             public int getCount() {
-                return 2;
+                return 3;
             }
         };
     }
 
     @Override
     public Component getDisplayName() {
-        return Component.literal("Solar Charger");
+        return Component.literal("Enhancement Table");
     }
 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-        return new SolarChargerMenu(id, inventory, this, this.data);
+        return new EnhancementTableMenu(id, inventory, this, this.data);
     }
 
     public IEnergyStorage getEnergyStorage() {
@@ -137,8 +135,8 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
     @Override
     protected void saveAdditional(CompoundTag nbt) {
         nbt.put("inventory", itemHandler.serializeNBT());
-        nbt.putInt("solar_charger.progress", this.progress);
-        nbt.putInt("solar_charger.energy", ENERGY_STORAGE.getEnergyStored());
+        nbt.putInt("enhancement_table.progress", this.progress);
+        nbt.putInt("enhancement_table.energy", ENERGY_STORAGE.getEnergyStored());
 
         super.saveAdditional(nbt);
     }
@@ -147,8 +145,8 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
     public void load(CompoundTag nbt) {
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
-        progress = nbt.getInt("solar_charger.progress");
-        ENERGY_STORAGE.setEnergy(nbt.getInt("solar_charger.energy"));
+        progress = nbt.getInt("enhancement_table.progress");
+        ENERGY_STORAGE.setEnergy(nbt.getInt("enhancement_table.energy"));
     }
 
     public void drops() {
@@ -163,7 +161,7 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
 
 
 
-    public static void tick(Level level, BlockPos pos, BlockState state, SolarChargerBlockEntity pEntity) {
+    public static void tick(Level level, BlockPos pos, BlockState state, EnhancementTableBlockEntity pEntity) {
         if(level.isClientSide()) {
             return;
         }
@@ -190,49 +188,57 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
 
     }
 
-    private static void extractEnergy(SolarChargerBlockEntity pEntity) {
+    private static void extractEnergy(EnhancementTableBlockEntity pEntity) {
         pEntity.ENERGY_STORAGE.extractEnergy(ENERGY_REQ, false);
     }
 
-    private static boolean hasEnoughEnergy(SolarChargerBlockEntity pEntity) {
+    private static boolean hasEnoughEnergy(EnhancementTableBlockEntity pEntity) {
         return pEntity.ENERGY_STORAGE.getEnergyStored() >= ENERGY_REQ;
     }
 
-    private static boolean hasCoreInFirstSlot(SolarChargerBlockEntity pEntity) {
-        return pEntity.itemHandler.getStackInSlot(0).getItem() == ModItems.UNCHARGED_ENHANCEMENT_CORE.get();
+    private static boolean hasCoreInFirstSlot(EnhancementTableBlockEntity pEntity) {
+        return pEntity.itemHandler.getStackInSlot(0).getItem() == ModItems.CHARGED_ENHANCEMENT_CORE.get();
+
     }
+    private static boolean hasBookInSecondSlot(EnhancementTableBlockEntity pEntity) {
+        return pEntity.itemHandler.getStackInSlot(1).getItem() == Items.BOOK;
+    }
+
 
     private void resetProgress() {
         this.progress = 0;
     }
 
-    private static void craftItem(SolarChargerBlockEntity pEntity) {
+    private static void craftItem(EnhancementTableBlockEntity pEntity) {
         if(hasRecipe(pEntity)) {
             pEntity.itemHandler.extractItem(0, 1, false);
-            pEntity.itemHandler.setStackInSlot(1, new ItemStack(ModItems.CHARGED_ENHANCEMENT_CORE.get(),
-                    pEntity.itemHandler.getStackInSlot(1).getCount() +1));
+            pEntity.itemHandler.extractItem(1, 1, false);
+            pEntity.itemHandler.setStackInSlot(2, new ItemStack(Items.ENCHANTED_BOOK,
+                    pEntity.itemHandler.getStackInSlot(2).getCount() +1));
 
             pEntity.resetProgress();
         }
     }
 
-    private static boolean hasRecipe(SolarChargerBlockEntity entity) {
+    private static boolean hasRecipe(EnhancementTableBlockEntity entity) {
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
         for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
             inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
         }
 
-        boolean hasCoreInFirstSlot = entity.itemHandler.getStackInSlot(0).getItem() == ModItems.UNCHARGED_ENHANCEMENT_CORE.get();
+        boolean hasCoreInFirstSlot = entity.itemHandler.getStackInSlot(0).getItem() == ModItems.CHARGED_ENHANCEMENT_CORE.get();
 
-        return hasCoreInFirstSlot && canInsertAmountIntoOutputSlot(inventory) &&
-                canInsertItemIntoOutputSlot(inventory, new ItemStack(ModItems.CHARGED_ENHANCEMENT_CORE.get(), 1));
+        boolean hasBookInSecondSlot = entity.itemHandler.getStackInSlot(1).getItem() == Items.BOOK;
+
+        return hasCoreInFirstSlot && hasBookInSecondSlot && canInsertAmountIntoOutputSlot(inventory) &&
+                canInsertItemIntoOutputSlot(inventory, new ItemStack(Items.ENCHANTED_BOOK, 1));
     }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack stack) {
-        return inventory.getItem(1).getItem() == stack.getItem() || inventory.getItem(1).isEmpty();
+        return inventory.getItem(2).getItem() == stack.getItem() || inventory.getItem(2).isEmpty();
     }
 
     private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
-        return inventory.getItem(1).getMaxStackSize() > inventory.getItem(1).getCount();
+        return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount();
     }
 }
