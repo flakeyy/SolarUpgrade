@@ -32,5 +32,12 @@ public abstract class ModEnergyStorage extends EnergyStorage {
         return energy;
     }
 
+    public void consumePower(int energy) {
+        this.energy -= energy;
+        if(this.energy < 0) {
+            this.energy = 0;
+        }
+    }
+
     public abstract void onEnergyChanged();
 }

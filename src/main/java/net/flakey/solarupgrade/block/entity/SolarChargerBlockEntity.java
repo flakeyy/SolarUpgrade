@@ -44,7 +44,7 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
         }
     };
 
-    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(40000, 2048) {
+    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(2000, 1280) {
         @Override
         public void onEnergyChanged() {
             setChanged();
