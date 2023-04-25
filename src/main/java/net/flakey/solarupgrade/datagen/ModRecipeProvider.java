@@ -1,6 +1,7 @@
 package net.flakey.solarupgrade.datagen;
 
 import net.flakey.solarupgrade.SolarUpgrade;
+import net.flakey.solarupgrade.block.ModBlocks;
 import net.flakey.solarupgrade.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -35,6 +36,108 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Items.QUARTZ, 4)
                 .unlockedBy("has_sand", has(Blocks.SAND))
                 .unlockedBy("has_quartz", has(Items.QUARTZ))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SOLAR_PANEL.get(), 1)
+                .define('#', ModItems.SOLAR_CELL.get())
+                .define('$', ModItems.METAL_FRAME.get())
+                .define('&', ModItems.COPPER_WIRE.get())
+                .pattern("###")
+                .pattern("$&$")
+                .pattern("$$$")
+                .unlockedBy("has_solar_cell", has(ModItems.SOLAR_CELL.get()))
+                .unlockedBy("has_metal_frame", has(ModItems.METAL_FRAME.get()))
+                .unlockedBy("has_copper_wire", has(ModItems.COPPER_WIRE.get()))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SOLAR_CELL.get(), 1)
+                .define('#', ModItems.GLASS_SHEET.get())
+                .define('$', ModItems.SILICON.get())
+                .define('&', ModItems.COPPER_WIRE.get())
+                .pattern("###")
+                .pattern("$&$")
+                .pattern("&$&")
+                .unlockedBy("has_glass_sheet", has(ModItems.GLASS_SHEET.get()))
+                .unlockedBy("has_silicon", has(ModItems.SILICON.get()))
+                .unlockedBy("has_copper_wire", has(ModItems.COPPER_WIRE.get()))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.METAL_FRAME.get(), 1)
+                .define('#', Items.IRON_INGOT)
+                .define('$', Items.IRON_BARS)
+                .define('&', Items.IRON_BLOCK)
+                .pattern("#&#")
+                .pattern("$#$")
+                .pattern("#$#")
+                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+                .unlockedBy("has_iron_bars", has(Items.IRON_BARS))
+                .unlockedBy("has_iron_block", has(Items.IRON_BLOCK))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ADVANCED_SOLAR_PANEL.get(), 1)
+                .define('#', ModBlocks.SOLAR_PANEL.get())
+                .define('$', ModItems.FORGOTTEN_MATERIAL.get())
+                .pattern("###")
+                .pattern("#$#")
+                .pattern("###")
+                .unlockedBy("has_solar_panel", has(ModBlocks.SOLAR_PANEL.get()))
+                .unlockedBy("has_forgotten_material", has(ModItems.FORGOTTEN_MATERIAL.get()))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SOLAR_CHARGER.get(), 1)
+                .define('#', ModItems.SILICON.get())
+                .define('$', ModItems.METAL_FRAME.get())
+                .define('&', ModItems.SOLAR_CELL.get())
+                .define('@', ModItems.COPPER_WIRE.get())
+                .pattern("$#$")
+                .pattern("@&@")
+                .pattern("$@$")
+                .unlockedBy("has_silicon", has(ModItems.SILICON.get()))
+                .unlockedBy("has_metal_frame", has(ModItems.METAL_FRAME.get()))
+                .unlockedBy("has_copper_wire", has(ModItems.COPPER_WIRE.get()))
+                .unlockedBy("has_solar_cell", has(ModItems.SOLAR_CELL.get()))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ENHANCEMENT_TABLE.get(), 1)
+                .define('#', ModItems.SILICON.get())
+                .define('$', ModItems.METAL_FRAME.get())
+                .define('&', ModItems.CHARGED_ENHANCEMENT_CORE.get())
+                .define('@', ModItems.COPPER_WIRE.get())
+                .define('!', Blocks.ENCHANTING_TABLE)
+                .pattern("$#$")
+                .pattern("@&@")
+                .pattern("$!$")
+                .unlockedBy("has_silicon", has(ModItems.SILICON.get()))
+                .unlockedBy("has_metal_frame", has(ModItems.METAL_FRAME.get()))
+                .unlockedBy("has_copper_wire", has(ModItems.COPPER_WIRE.get()))
+                .unlockedBy("has_charged_enchantment_core", has(ModItems.CHARGED_ENHANCEMENT_CORE.get()))
+                .unlockedBy("has_enchanting_table", has(Blocks.ENCHANTING_TABLE))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RAW_ENHANCEMENT_CORE.get(), 1)
+                .define('#', ModItems.FORGOTTEN_MATERIAL.get())
+                .define('$', Items.DIAMOND)
+                .define('&', Items.IRON_INGOT)
+                .define('@', Blocks.STONE)
+                .pattern("@$@")
+                .pattern("&#&")
+                .pattern("@&@")
+                .unlockedBy("has_forgotten_material", has(ModItems.FORGOTTEN_MATERIAL.get()))
+                .unlockedBy("has_diamond", has(Items.DIAMOND))
+                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+                .unlockedBy("has_stone", has(Blocks.STONE))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GLASS_SHEET.get(), 6)
+                .define('#', Blocks.GLASS)
+                .pattern("###")
+                .unlockedBy("has_glass", has(Blocks.GLASS))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COPPER_WIRE.get(), 6)
+                .define('#', Items.COPPER_INGOT)
+                .pattern("###")
+                .unlockedBy("has_glass", has(Items.COPPER_INGOT))
                 .save(consumer);
     }
 

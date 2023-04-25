@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "solarupgrade:solar_cell"
+    },
+    "$": {
+      "item": "solarupgrade:metal_frame"
+    },
+    "&": {
+      "item": "solarupgrade:copper_wire"
+    }
+  },
+  "pattern": [
+    "###",
+    "$&$",
+    "$$$"
+  ],
+  "result": {
+    "item": "solarupgrade:solar_panel"
+  },
+  "show_notification": true
+}

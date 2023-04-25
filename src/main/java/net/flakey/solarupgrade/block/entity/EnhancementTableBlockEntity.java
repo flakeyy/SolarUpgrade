@@ -5,11 +5,13 @@ import net.flakey.solarupgrade.item.ModItems;
 import net.flakey.solarupgrade.networking.ModMessages;
 import net.flakey.solarupgrade.networking.packet.EnergySyncS2CPacket;
 import net.flakey.solarupgrade.screen.EnhancementTableMenu;
+import net.flakey.solarupgrade.util.CustomEnchantedBook;
 import net.flakey.solarupgrade.util.ModEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -17,10 +19,9 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantmentInstance;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -31,8 +32,12 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class EnhancementTableBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
@@ -176,7 +181,7 @@ public class EnhancementTableBlockEntity extends BlockEntity implements MenuProv
             }
          } else {
             if(pEntity.progress > 0) {
-                if (hasCoreInFirstSlot(pEntity)) {
+                if (hasCoreInFirstSlot(pEntity) && (hasBookInSecondSlot(pEntity))) {
                     pEntity.progress--;
                 }
                 else {
@@ -210,12 +215,23 @@ public class EnhancementTableBlockEntity extends BlockEntity implements MenuProv
     }
 
     private static void craftItem(EnhancementTableBlockEntity pEntity) {
-        if(hasRecipe(pEntity)) {
+
+
+        List<Enchantment> enchantmentList = Arrays.asList(
+                ModEnchantments.BLEED.get(),
+                ModEnchantments.HOLLOWED_OUT.get(),
+                ModEnchantments.LIGHTNING_STRIKE.get(),
+                ModEnchantments.PARRY.get(),
+                ModEnchantments.RAGE.get(),
+                ModEnchantments.SELF_HEALING.get(),
+                ModEnchantments.SWIFT_STEP.get()
+        );
+
+        if (hasRecipe(pEntity)) {
             pEntity.itemHandler.extractItem(0, 1, false);
             pEntity.itemHandler.extractItem(1, 1, false);
-            pEntity.itemHandler.setStackInSlot(2, new ItemStack(Items.ENCHANTED_BOOK,
-                    pEntity.itemHandler.getStackInSlot(2).getCount() +1));
-
+            ItemStack randomEnchantedBook = CustomEnchantedBook.createRandomEnchantedBook(enchantmentList, 1);
+            pEntity.itemHandler.setStackInSlot(2, randomEnchantedBook);
             pEntity.resetProgress();
         }
     }

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "!": {
+      "item": "minecraft:enchanting_table"
+    },
+    "#": {
+      "item": "solarupgrade:silicon"
+    },
+    "$": {
+      "item": "solarupgrade:metal_frame"
+    },
+    "&": {
+      "item": "solarupgrade:charged_enhancement_core"
+    },
+    "@": {
+      "item": "solarupgrade:copper_wire"
+    }
+  },
+  "pattern": [
+    "$#$",
+    "@&@",
+    "$!$"
+  ],
+  "result": {
+    "item": "solarupgrade:enhancement_table"
+  },
+  "show_notification": true
+}

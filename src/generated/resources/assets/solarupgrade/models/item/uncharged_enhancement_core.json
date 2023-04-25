@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "solarupgrade:item/uncharged_enhancement_core"
+  }
+}

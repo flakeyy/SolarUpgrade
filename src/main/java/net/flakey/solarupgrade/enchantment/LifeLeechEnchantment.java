@@ -1,9 +1,5 @@
 package net.flakey.solarupgrade.enchantment;
 
-import net.flakey.solarupgrade.effect.ModEffects;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageSources;
-import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;

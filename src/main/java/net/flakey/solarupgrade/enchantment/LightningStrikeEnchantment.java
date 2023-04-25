@@ -36,4 +36,11 @@ public class LightningStrikeEnchantment extends Enchantment {
     public boolean isTreasureOnly() {
         return true;
     }
+
+    @Override
+    public boolean isAllowedOnBooks() {
+        return true;
+    }
+
+
 }
