@@ -5,7 +5,7 @@ plugins {
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
-version = '0.6-1.19.4'
+version = '0.6.1-1.19.4'
 group = 'net.flakey.solarupgrade' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'solarupgrade'
 
@@ -51,6 +51,10 @@ minecraft {
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'solarupgrade'
+
+            // Java system properties
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 solarupgrade {
@@ -133,6 +137,8 @@ repositories {
         url = "https://modmaven.dev"
     }
 }
+
+
 
 dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
