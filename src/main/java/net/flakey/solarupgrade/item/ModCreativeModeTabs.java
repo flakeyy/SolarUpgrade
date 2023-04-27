@@ -1,6 +1,7 @@
 package net.flakey.solarupgrade.item;
 
 import net.flakey.solarupgrade.SolarUpgrade;
+import net.flakey.solarupgrade.block.ModBlocks;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -17,7 +18,7 @@ public class ModCreativeModeTabs {
     @SubscribeEvent
     public static void registerCreativeModeTabs(CreativeModeTabEvent.Register event) {
         SOLARUPGRADE_TAB = event.registerCreativeModeTab(new ResourceLocation(SolarUpgrade.MOD_ID, "solarupgrade_tab"),
-                builder -> builder.icon(() -> new ItemStack(ModItems.SILICON.get()))
+                builder -> builder.icon(() -> new ItemStack(ModBlocks.ADVANCED_SOLAR_PANEL.get()))
                         .title(Component.translatable("creativemodetab.solarupgrade_tab")));
 
     }
