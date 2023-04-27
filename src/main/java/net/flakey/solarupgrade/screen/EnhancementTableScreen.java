@@ -3,7 +3,7 @@ package net.flakey.solarupgrade.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.flakey.solarupgrade.SolarUpgrade;
-import net.flakey.solarupgrade.screen.renderer.EnhancementTableEnergyInfoArea;
+import net.flakey.solarupgrade.screen.renderer.EnergyInfoArea;
 import net.flakey.solarupgrade.util.MouseUtil;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
@@ -16,7 +16,7 @@ import java.util.Optional;
 public class EnhancementTableScreen extends AbstractContainerScreen<EnhancementTableMenu> {
     private static final ResourceLocation TEXTURE =
             new ResourceLocation(SolarUpgrade.MOD_ID, "textures/gui/solar_charger_gui.png");
-    private EnhancementTableEnergyInfoArea EnhancementTableEnergyInfoArea;
+    private EnergyInfoArea EnergyInfoArea;
 
     public EnhancementTableScreen(EnhancementTableMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);
@@ -31,7 +31,7 @@ public class EnhancementTableScreen extends AbstractContainerScreen<EnhancementT
     private void assignEnergyInfoArea() {
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
-        EnhancementTableEnergyInfoArea = new EnhancementTableEnergyInfoArea(x + 93, y + 19, menu.blockEntity.getEnergyStorage());
+        EnergyInfoArea = new EnergyInfoArea(x + 93, y + 19, menu.blockEntity.getEnergyStorage());
     }
 
     @Override
@@ -45,7 +45,7 @@ public class EnhancementTableScreen extends AbstractContainerScreen<EnhancementT
 
     private void renderEnergyAreaTooltips(PoseStack pPoseStack, int pMouseX, int pMouseY, int x, int y) {
         if(isMouseAboveArea(pMouseX, pMouseY, x, y, 93, 19, 5, 36)) {
-            renderTooltip(pPoseStack, EnhancementTableEnergyInfoArea.getTooltips(),
+            renderTooltip(pPoseStack, EnergyInfoArea.getTooltips(),
                     Optional.empty(), pMouseX - x, pMouseY - y);
         }
     }
@@ -61,7 +61,7 @@ public class EnhancementTableScreen extends AbstractContainerScreen<EnhancementT
         this.blit(pPoseStack, x, y, 0, 0, imageWidth, imageHeight);
 
         renderProgressArrow(pPoseStack, x, y);
-        EnhancementTableEnergyInfoArea.draw(pPoseStack);
+        EnergyInfoArea.draw(pPoseStack);
     }
 
     private void renderProgressArrow(PoseStack pPoseStack, int x, int y) {

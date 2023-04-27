@@ -3,6 +3,7 @@ package net.flakey.solarupgrade.datagen;
 import net.flakey.solarupgrade.SolarUpgrade;
 import net.flakey.solarupgrade.block.ModBlocks;
 import net.minecraft.data.PackOutput;
+import net.minecraft.network.protocol.game.ClientboundMoveEntityPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
@@ -17,12 +18,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         super(output, SolarUpgrade.MOD_ID, exFileHelper);
     }
 
+
     @Override
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.END_FORGOTTEN_ORE);
-        blockWithItem(ModBlocks.SOLAR_CHARGER);
         blockWithItem(ModBlocks.ENHANCEMENT_TABLE);
-
 
         /* RUBBER TREE :(
         logBlock(((RotatedPillarBlock) ModBlocks.RUBBER_LOG.get()));

@@ -3,7 +3,7 @@ package net.flakey.solarupgrade.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.flakey.solarupgrade.SolarUpgrade;
-import net.flakey.solarupgrade.screen.renderer.SolarChargerEnergyInfoArea;
+import net.flakey.solarupgrade.screen.renderer.EnergyInfoArea;
 import net.flakey.solarupgrade.util.MouseUtil;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
@@ -16,7 +16,7 @@ import java.util.Optional;
 public class SolarChargerScreen extends AbstractContainerScreen<SolarChargerMenu> {
     private static final ResourceLocation TEXTURE =
             new ResourceLocation(SolarUpgrade.MOD_ID, "textures/gui/solar_charger_gui.png");
-    private SolarChargerEnergyInfoArea solarChargerEnergyInfoArea;
+    private EnergyInfoArea EnergyInfoArea;
 
     public SolarChargerScreen(SolarChargerMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);
@@ -31,7 +31,7 @@ public class SolarChargerScreen extends AbstractContainerScreen<SolarChargerMenu
     private void assignEnergyInfoArea() {
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
-        solarChargerEnergyInfoArea = new SolarChargerEnergyInfoArea(x + 93, y + 19, menu.blockEntity.getEnergyStorage());
+        EnergyInfoArea = new EnergyInfoArea(x + 29, y + 9, menu.blockEntity.getEnergyStorage());
     }
 
     @Override
@@ -44,8 +44,8 @@ public class SolarChargerScreen extends AbstractContainerScreen<SolarChargerMenu
     }
 
     private void renderEnergyAreaTooltips(PoseStack pPoseStack, int pMouseX, int pMouseY, int x, int y) {
-        if(isMouseAboveArea(pMouseX, pMouseY, x, y, 93, 19, 5, 36)) {
-            renderTooltip(pPoseStack, solarChargerEnergyInfoArea.getTooltips(),
+        if(isMouseAboveArea(pMouseX, pMouseY, x, y, 29, 9, 10, 60)) {
+            renderTooltip(pPoseStack, EnergyInfoArea.getTooltips(),
                     Optional.empty(), pMouseX - x, pMouseY - y);
         }
     }
@@ -61,12 +61,12 @@ public class SolarChargerScreen extends AbstractContainerScreen<SolarChargerMenu
         this.blit(pPoseStack, x, y, 0, 0, imageWidth, imageHeight);
 
         renderProgressArrow(pPoseStack, x, y);
-        solarChargerEnergyInfoArea.draw(pPoseStack);
+        EnergyInfoArea.draw(pPoseStack);
     }
 
     private void renderProgressArrow(PoseStack pPoseStack, int x, int y) {
         if(menu.isCrafting()) {
-            blit(pPoseStack, x + 104, y + 29, 176, 0, menu.getScaledProgress() + 1, 16);
+            blit(pPoseStack, x + 88, y + 32, 176, 0, menu.getScaledProgress() + 1, 16);
 
         }
     }

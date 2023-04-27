@@ -37,14 +37,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(2) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
         }
     };
 
-    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(1000000, 1280) {
+    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(80000, 1280) {
         @Override
         public void onEnergyChanged() {
             setChanged();
@@ -83,14 +83,14 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
 
             @Override
             public int getCount() {
-                return 2;
+                return 3;
             }
         };
     }
 
     @Override
     public Component getDisplayName() {
-        return Component.literal("Solar Charger");
+        return Component.literal("                 Solar Charger");
     }
 
     @Nullable
@@ -209,8 +209,9 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
     private static void craftItem(SolarChargerBlockEntity pEntity) {
         if(hasRecipe(pEntity)) {
             pEntity.itemHandler.extractItem(0, 1, false);
-            pEntity.itemHandler.setStackInSlot(1, new ItemStack(ModItems.CHARGED_ENHANCEMENT_CORE.get(),
-                    pEntity.itemHandler.getStackInSlot(1).getCount() +1));
+            pEntity.itemHandler.extractItem(1, 4, false);
+            pEntity.itemHandler.setStackInSlot(2, new ItemStack(ModItems.CHARGED_ENHANCEMENT_CORE.get(),
+                    pEntity.itemHandler.getStackInSlot(2).getCount() +1));
 
             pEntity.resetProgress();
         }
@@ -223,16 +224,17 @@ public class SolarChargerBlockEntity extends BlockEntity implements MenuProvider
         }
 
         boolean hasCoreInFirstSlot = entity.itemHandler.getStackInSlot(0).getItem() == ModItems.UNCHARGED_ENHANCEMENT_CORE.get();
+        boolean hasGoldBlockInSecondSlot = entity.itemHandler.getStackInSlot(1).getItem() == Blocks.GOLD_BLOCK.asItem();
 
-        return hasCoreInFirstSlot && canInsertAmountIntoOutputSlot(inventory) &&
-                canInsertItemIntoOutputSlot(inventory, new ItemStack(ModItems.CHARGED_ENHANCEMENT_CORE.get(), 1));
+        return hasCoreInFirstSlot && hasGoldBlockInSecondSlot && canInsertAmountIntoOutputSlot(inventory) &&
+                canInsertItemIntoOutputSlot(inventory, new ItemStack(ModItems.CHARGED_ENHANCEMENT_CORE.get(), 2));
     }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack stack) {
-        return inventory.getItem(1).getItem() == stack.getItem() || inventory.getItem(1).isEmpty();
+        return inventory.getItem(2).getItem() == stack.getItem() || inventory.getItem(2).isEmpty();
     }
 
     private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
-        return inventory.getItem(1).getMaxStackSize() > inventory.getItem(1).getCount();
+        return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount();
     }
 }

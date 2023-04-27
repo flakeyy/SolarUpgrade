@@ -18,12 +18,12 @@ public class SolarChargerMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public SolarChargerMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-        this(id, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(id, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(3));
     }
 
     public SolarChargerMenu(int id, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.SOLAR_CHARGER_MENU.get(), id);
-        checkContainerSize(inv, 2);
+        checkContainerSize(inv, 3);
         blockEntity = (SolarChargerBlockEntity) entity;
         this.level = inv.player.level;
         this.data = data;
@@ -32,8 +32,9 @@ public class SolarChargerMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 52, 29));
-            this.addSlot(new SlotItemHandler(handler, 1, 134, 29));
+            this.addSlot(new SlotItemHandler(handler, 0, 56, 12));
+            this.addSlot(new SlotItemHandler(handler, 1, 56, 52));
+            this.addSlot(new SlotItemHandler(handler, 2, 124, 31));
         });
 
         addDataSlots(data);
@@ -71,7 +72,7 @@ public class SolarChargerMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 2;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {

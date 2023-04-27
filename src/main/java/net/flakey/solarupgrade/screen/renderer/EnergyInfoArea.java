@@ -13,24 +13,24 @@ import java.util.List;
  *  This code is licensed under "Blu's License of Common Sense"
  *  Details can be found in the license file in the root folder of this project
  */
-public class SolarPanelEnergyInfoArea extends InfoArea {
+public class EnergyInfoArea extends InfoArea {
     private final IEnergyStorage energy;
 
-    public SolarPanelEnergyInfoArea(int xMin, int yMin)  {
+    public EnergyInfoArea(int xMin, int yMin)  {
         this(xMin, yMin, null,8,64);
     }
 
-    public SolarPanelEnergyInfoArea(int xMin, int yMin, IEnergyStorage energy)  {
-        this(xMin, yMin, energy,8,64);
+    public EnergyInfoArea(int xMin, int yMin, IEnergyStorage energy)  {
+        this(xMin, yMin, energy,10,60);
     }
 
-    public SolarPanelEnergyInfoArea(int xMin, int yMin, IEnergyStorage energy, int width, int height)  {
+    public EnergyInfoArea(int xMin, int yMin, IEnergyStorage energy, int width, int height)  {
         super(new Rect2i(xMin, yMin, width, height));
         this.energy = energy;
     }
 
     public List<Component> getTooltips() {
-        return List.of(Component.literal(energy.getEnergyStored()+"/"+energy.getMaxEnergyStored()+" FE"));
+        return List.of(Component.literal(energy.getEnergyStored()+"/"+energy.getMaxEnergyStored()+" SF"));
     }
 
     @Override
