@@ -218,13 +218,15 @@ public class EnhancementTableBlockEntity extends BlockEntity implements MenuProv
 
 
         List<Enchantment> enchantmentList = Arrays.asList(
+                //ModEnchantments.PARRY.get(),
+                //ModEnchantments.HOLLOWED_OUT.get(),
+                //ModEnchantments.LIFE_LEECH.get(),
                 ModEnchantments.BLEED.get(),
-                ModEnchantments.HOLLOWED_OUT.get(),
                 ModEnchantments.LIGHTNING_STRIKE.get(),
-                ModEnchantments.PARRY.get(),
                 ModEnchantments.RAGE.get(),
                 ModEnchantments.SELF_HEALING.get(),
                 ModEnchantments.SWIFT_STEP.get()
+
         );
 
         if (hasRecipe(pEntity)) {
