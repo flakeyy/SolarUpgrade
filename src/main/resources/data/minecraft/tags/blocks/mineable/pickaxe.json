@@ -3,9 +3,8 @@
   "values": [
     "solarupgrade:end_forgotten_ore",
     "solarupgrade:solar_panel",
-    "solarupgrade:solar_array",
+    "solarupgrade:advanced_solar_panel",
     "solarupgrade:solar_charger",
     "solarupgrade:enhancement_table"
-
   ]
 }

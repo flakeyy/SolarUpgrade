@@ -3,7 +3,6 @@
   "item.solarupgrade.copper_wire": "Copper Wire",
   "item.solarupgrade.glass_sheet": "Glass Sheet",
   "item.solarupgrade.solar_cell": "Solar Cell",
-  "item.solarupgrade.rubber": "Rubber",
   "item.solarupgrade.metal_frame": "Metal Frame",
   "item.solarupgrade.forgotten_material": "Forgotten Material",
   "item.solarupgrade.raw_enhancement_core": "Raw Enhancement Core",
@@ -17,14 +16,6 @@
   "block.solarupgrade.advanced_solar_panel": "Advanced Solar Panel",
   "block.solarupgrade.enhancement_table": "Enhancement Table",
   "block.solarupgrade.end_forgotten_ore": "Forgotten Ore",
-
-  "block.solarupgrade.rubber_log":  "Rubber Log",
-  "block.solarupgrade.rubber_wood":  "Rubber Wood",
-  "block.solarupgrade.rubber_planks":  "Rubber Planks",
-  "block.solarupgrade.stripped_rubber_log":  "Stripped Rubber Log",
-  "block.solarupgrade.stripped_rubber_wood":  "Stripped Rubber Wood",
-  "block.solarupgrade.rubber_leaves":  "Rubber Leaves",
-  "block.solarupgrade.rubber_sapling":  "Rubber Sapling",
 
   "enchantment.solarupgrade.lightning_strike": "Lightning Strike",
   "enchantment.solarupgrade.bleed": "Bleed",

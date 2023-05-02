@@ -99,9 +99,7 @@ public class SolarUpgrade
             event.accept(ModBlocks.ADVANCED_SOLAR_PANEL);
             event.accept(ModBlocks.ENHANCEMENT_TABLE);
             event.accept(ModBlocks.END_FORGOTTEN_ORE);
-
         }
-
     }
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
