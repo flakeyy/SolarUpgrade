@@ -15,7 +15,7 @@ import java.util.Optional;
 
 public class EnhancementTableScreen extends AbstractContainerScreen<EnhancementTableMenu> {
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(SolarUpgrade.MOD_ID, "textures/gui/solar_charger_gui.png");
+            new ResourceLocation(SolarUpgrade.MOD_ID, "textures/gui/enhancement_table_gui.png");
     private EnergyInfoArea EnergyInfoArea;
 
     public EnhancementTableScreen(EnhancementTableMenu menu, Inventory inventory, Component component) {
@@ -31,7 +31,7 @@ public class EnhancementTableScreen extends AbstractContainerScreen<EnhancementT
     private void assignEnergyInfoArea() {
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
-        EnergyInfoArea = new EnergyInfoArea(x + 93, y + 19, menu.blockEntity.getEnergyStorage());
+        EnergyInfoArea = new EnergyInfoArea(x + 29, y + 9, menu.blockEntity.getEnergyStorage());
     }
 
     @Override
@@ -44,7 +44,7 @@ public class EnhancementTableScreen extends AbstractContainerScreen<EnhancementT
     }
 
     private void renderEnergyAreaTooltips(PoseStack pPoseStack, int pMouseX, int pMouseY, int x, int y) {
-        if(isMouseAboveArea(pMouseX, pMouseY, x, y, 93, 19, 5, 36)) {
+        if(isMouseAboveArea(pMouseX, pMouseY, x, y, 29, 9, 10, 60)) {
             renderTooltip(pPoseStack, EnergyInfoArea.getTooltips(),
                     Optional.empty(), pMouseX - x, pMouseY - y);
         }
@@ -66,7 +66,7 @@ public class EnhancementTableScreen extends AbstractContainerScreen<EnhancementT
 
     private void renderProgressArrow(PoseStack pPoseStack, int x, int y) {
         if(menu.isCrafting()) {
-            blit(pPoseStack, x + 104, y + 29, 176, 0, menu.getScaledProgress() + 1, 16);
+            blit(pPoseStack, x + 88, y + 32, 176, 0, menu.getScaledProgress() + 1, 16);
 
         }
     }

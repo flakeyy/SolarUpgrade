@@ -24,9 +24,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SolarPanelBlockEntity extends BlockEntity{
-    int maxTransfer = 32;
+    int maxTransfer = 8;
     int productionMultiplier = 1;
-    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(4000, maxTransfer) {
+    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(12000, maxTransfer) {
         @Override
         public void onEnergyChanged() {
             setChanged();

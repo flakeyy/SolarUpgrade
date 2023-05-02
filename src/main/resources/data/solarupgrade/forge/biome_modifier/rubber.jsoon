@@ -1,7 +1,0 @@
-{
-  "_type": "forge:add_features",
-  "_biomes": "#forge:is_swamp",
-  "_features": "solarupgrade:rubber_placed",
-  "_step": "vegetal_decoration"
-
-}

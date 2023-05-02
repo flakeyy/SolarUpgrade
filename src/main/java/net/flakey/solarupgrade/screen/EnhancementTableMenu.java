@@ -32,9 +32,9 @@ public class EnhancementTableMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 52, 29));
-            this.addSlot(new SlotItemHandler(handler, 1, 82, 29));
-            this.addSlot(new SlotItemHandler(handler, 2, 134, 29));
+            this.addSlot(new SlotItemHandler(handler, 0, 56, 12));
+            this.addSlot(new SlotItemHandler(handler, 1, 56, 52));
+            this.addSlot(new SlotItemHandler(handler, 2, 124, 31));
         });
 
         addDataSlots(data);

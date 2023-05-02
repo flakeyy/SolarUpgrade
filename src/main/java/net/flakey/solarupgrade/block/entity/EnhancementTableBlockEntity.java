@@ -47,7 +47,7 @@ public class EnhancementTableBlockEntity extends BlockEntity implements MenuProv
         }
     };
 
-    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(1000000, 1280) {
+    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(60000, 512) {
         @Override
         public void onEnergyChanged() {
             setChanged();
@@ -93,7 +93,7 @@ public class EnhancementTableBlockEntity extends BlockEntity implements MenuProv
 
     @Override
     public Component getDisplayName() {
-        return Component.literal("Enhancement Table");
+        return Component.literal("                 Enhancement Table");
     }
 
     @Nullable

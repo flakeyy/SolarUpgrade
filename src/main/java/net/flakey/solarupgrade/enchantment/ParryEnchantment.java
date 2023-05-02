@@ -43,7 +43,7 @@ public class ParryEnchantment extends Enchantment {
     }
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
-    public static class LifeLeechEnchantmentHandler {
+    public static class ParryEnchantmentHandler {
         @SubscribeEvent
         public static void tickPlayer(TickEvent.PlayerTickEvent event) {
             if (event.phase == TickEvent.Phase.END || event.player.level.isClientSide()) return;

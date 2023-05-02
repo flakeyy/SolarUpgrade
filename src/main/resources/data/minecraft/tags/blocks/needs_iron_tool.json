@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     "solarupgrade:solar_panel",
-    "solarupgrade:solar_array",
+    "solarupgrade:advanced_solar_panel",
     "solarupgrade:solar_charger",
     "solarupgrade:enhancement_table"
 

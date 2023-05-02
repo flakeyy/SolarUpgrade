@@ -13,6 +13,8 @@ import net.flakey.solarupgrade.screen.ModMenuTypes;
 import net.flakey.solarupgrade.screen.SolarChargerScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
@@ -24,13 +26,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
+import java.util.function.Supplier;
+
 @Mod(SolarUpgrade.MOD_ID)
 public class SolarUpgrade
 {
-    // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "solarupgrade";
-    // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public SolarUpgrade() {
@@ -66,7 +67,6 @@ public class SolarUpgrade
             event.accept(ModItems.MODIFIED_ENHANCEMENT_CORE);
             event.accept(ModItems.COPPER_WIRE);
             event.accept(ModItems.GLASS_SHEET);
-            //event.accept(ModItems.RUBBER);
             event.accept(ModItems.METAL_FRAME);
             event.accept(ModItems.FORGOTTEN_MATERIAL);
 
@@ -79,17 +79,6 @@ public class SolarUpgrade
         }
         if(event.getTab() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.accept(ModBlocks.END_FORGOTTEN_ORE);
-            /* RUBBER TREE :(
-
-            event.accept(ModBlocks.RUBBER_LOG);
-            event.accept(ModBlocks.RUBBER_WOOD);
-            event.accept(ModBlocks.RUBBER_PLANKS);
-            event.accept(ModBlocks.RUBBER_LEAVES);
-            event.accept(ModBlocks.RUBBER_SAPLING);
-            event.accept(ModBlocks.STRIPPED_RUBBER_LOG);
-            event.accept(ModBlocks.STRIPPED_RUBBER_WOOD);
-
-            RUBBER TREE :( */
         }
 
         if(event.getTab() == ModCreativeModeTabs.SOLARUPGRADE_TAB) {
@@ -98,7 +87,6 @@ public class SolarUpgrade
             event.accept(ModItems.SOLAR_CELL);
             event.accept(ModItems.COPPER_WIRE);
             event.accept(ModItems.GLASS_SHEET);
-            //event.accept(ModItems.RUBBER);
             event.accept(ModItems.METAL_FRAME);
             event.accept(ModItems.FORGOTTEN_MATERIAL);
             event.accept(ModItems.RAW_ENHANCEMENT_CORE);
@@ -112,29 +100,15 @@ public class SolarUpgrade
             event.accept(ModBlocks.ENHANCEMENT_TABLE);
             event.accept(ModBlocks.END_FORGOTTEN_ORE);
 
-
-            /* RUBBER TREE :(
-            event.accept(ModBlocks.RUBBER_LOG);
-            event.accept(ModBlocks.RUBBER_WOOD);
-            event.accept(ModBlocks.RUBBER_PLANKS);
-            event.accept(ModBlocks.RUBBER_LEAVES);
-            event.accept(ModBlocks.RUBBER_SAPLING);
-            event.accept(ModBlocks.STRIPPED_RUBBER_LOG);
-            event.accept(ModBlocks.STRIPPED_RUBBER_WOOD);
-
-            RUBBER TREE :( */
-
         }
 
     }
 
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
             MenuScreens.register(ModMenuTypes.SOLAR_CHARGER_MENU.get(), SolarChargerScreen::new);
             MenuScreens.register(ModMenuTypes.ENHANCEMENT_TABLE_MENU.get(), EnhancementTableScreen::new);
 
